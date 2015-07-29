@@ -1,6 +1,6 @@
 const _         = require('lodash');
 
-let textMixins   = require("../src/textMixins");
+let textMixins   = require("../src/text_mixins");
 
 describe('textMixins', ()=> {
 

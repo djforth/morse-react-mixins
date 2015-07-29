@@ -1,6 +1,6 @@
 const _         = require('lodash');
 
-let cssMixins   = require("../src/cssMixin");
+let cssMixins   = require("../src/css_mixins");
 
 describe('cssMixins', ()=> {
   let revert, spy;
