@@ -1,7 +1,7 @@
 
 
-const css_mixins  = require("./lib/css_mixins");
-const text_mixins = require("./lib/text_mixins");
+var css_mixins  = require("./lib/css_mixins");
+var text_mixins = require("./lib/text_mixins");
 
 
 exports.css_mixins  = css_mixins;
