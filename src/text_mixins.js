@@ -10,7 +10,7 @@ module.exports = {
   },
 
   createId(...args){
-    return args.join("-").toLowerCase().replace(" ", "-");
+    return args.join("-").toLowerCase().replace(/\s/g, "-");
   },
 
   removeUnderscore(input){
