@@ -1,6 +1,8 @@
 // Karma configuration
 // Generated on Sun Jun 07 2015 21:56:30 GMT+0100 (BST)
 
+var babelify    = require("babelify");
+
 module.exports = function(config) {
   config.set({
 
@@ -15,7 +17,7 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-      './node_modules/babelify/node_modules/babel-core/browser-polyfill.js',
+      '../node_modules/babel-polyfill/browser.js',
       './node_modules/react-tools/src/test/phantomjs-shims.js',
       './specs/*_spec.es6.js',
     ],
@@ -35,9 +37,12 @@ module.exports = function(config) {
 
     browserify: {
       debug: false,
-      transform: ['babelify', ['rewireify', { ignore: 'moof' }]],
+      transform: [['rewireify', { ignore: 'moof' }]],
       extensions: [ ".es6.js", ".js"],
-      bundleDelay: 1000
+      bundleDelay: 1000,
+      configure: function(bundle) {
+        bundle.transform(babelify, {presets: ["es2015", "react"]})
+      }
     },
 
 
@@ -66,16 +71,12 @@ module.exports = function(config) {
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ['Chrome', 'PhantomJS', 'Opera', 'Safari', 'Firefox'],
+    browsers: ['Chrome', 'PhantomJS', 'Safari', 'Firefox'],
 
 
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits
     singleRun: false,
 
-    coverageReporter: {
-      type : 'html',
-      dir : 'coverage/'
-    },
   });
 };
