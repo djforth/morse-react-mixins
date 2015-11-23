@@ -18,14 +18,19 @@ var getTrueWidth = (e)=>{
     let v = getValue(elm.getPropertyValue(attr));
     n += v;
   });
-  add_element({elm:e, width:n});
+  addElement(e, n);
   return n;
 };
 
-function add_element(elm, w){
-  if(_.includes(elm_sizes, elm)){
-    elm_sizes = _.map(elm_sizes, (e)=>{
-      if(e.elm === elm) e.width = w;
+function addElement(elm, w){
+  if(
+    _.includes(
+      _.pluck(elm_sizes, 'elm'),
+      elm)
+    ){
+      elm_sizes = _.map(elm_sizes, (e)=>{
+
+      if(e.elm.isEqualNode(elm)) e.width = w;
 
       return e;
     });

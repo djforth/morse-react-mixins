@@ -27,10 +27,49 @@ describe('widthMixins', ()=> {
     });
   });
 
+  describe('addElement', function() {
+    let elms, addElement, holders;
+    beforeEach(()=>{
+      holders = []
+      holders.push(createElm.createHolder("holder0", null,"div"))
+      holders.push(createElm.createHolder("holder1", null,"div"));
+
+      elms = widthMixins.__get__('elm_sizes');
+      addElement = widthMixins.__get__('addElement');
+    });
+
+    afterEach(()=>{
+      widthMixins.__set__('elm_sizes', []);
+    })
+
+    it('should add to elms list if new elm added', function() {
+      expect(elms.length).toEqual(0)
+      addElement(holders[0], 100);
+      expect(elms.length).toEqual(1)
+
+      addElement(holders[1], 100);
+      expect(elms.length).toEqual(2)
+    });
+
+    it('should update if the same element is added', function() {
+      addElement(holders[0], 100);
+      expect(elms.length).toEqual(1);
+      expect(elms[0].width).toEqual(100);
+
+      addElement(holders[0], 200);
+      expect(elms.length).toEqual(1);
+      expect(elms[0].width).toEqual(200);
+    });
+
+
+  });
+
   describe('getTrueWidth', function() {
-    let elms, getTrueWidth, holder;
+    let elms, addElement, getTrueWidth, holder;
 
     beforeEach(function() {
+      spy    = jasmine.createSpy("addElement");
+      revert = widthMixins.__set__('addElement', spy);
       getTrueWidth = widthMixins.__get__('getTrueWidth');
       let i;
       holder = createElm.createHolder("holder", null,"div")
@@ -39,7 +78,7 @@ describe('widthMixins', ()=> {
       holder.style.margin  = "5px";
       holder.style.width   = "100px";
       holder.style.border  = "1px solid black";
-      console.log(holder.getBoundingClientRect())
+
     });
 
     afterEach(()=>{
@@ -50,6 +89,11 @@ describe('widthMixins', ()=> {
       var width = getTrueWidth(holder);
       // console.log("width is %j", width)
       expect(width).toEqual(132);
+    });
+
+    it('shoould add to element list', function() {
+      var width = getTrueWidth(holder);
+      expect(spy).toHaveBeenCalledWith(holder, 132)
     });
   });
 
