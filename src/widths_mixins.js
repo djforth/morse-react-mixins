@@ -1,5 +1,8 @@
 
-const _ = require("lodash");
+//Libraries
+const React = require("react")
+    , ReactDOM = require("react-dom")
+    , _     = require("lodash");
 
 const attrs = ["padding-left", "padding-right", "margin-left", "margin-right", "border-left-width", "border-right-width", "width"];
 
@@ -25,7 +28,7 @@ var getTrueWidth = (e)=>{
 function addElement(elm, w){
   if(
     _.includes(
-      _.pluck(elm_sizes, 'elm'),
+      _.pluck(elm_sizes,  "elm"),
       elm)
     ){
       elm_sizes = _.map(elm_sizes, (e)=>{
@@ -56,6 +59,14 @@ module.exports = {
     return this;
   }
 
+  , convertReactComps(refs){
+     elements = _.map(_.values(refs), (r)=>{
+      if(_.isElement(r)) return r;
+      return ReactDOM.findDOMNode(r);
+    });
+
+  }
+
   , getAllWidths:()=>{
     if(elm_sizes.length === 0
           && elements.length > 0){
@@ -76,5 +87,7 @@ module.exports = {
 
     return width;
   }
+
+
 };
 
