@@ -10,7 +10,6 @@ let elements  = [];
 let elm_sizes = [];
 
 var getValue = (v)=>{
-  // console.log(v)
   return Number(v.replace(/[a-z]|%/g, ""));
 };
 
@@ -68,11 +67,6 @@ module.exports = {
   }
 
   , getAllWidths:()=>{
-    if(elm_sizes.length === 0
-          && elements.length > 0){
-      this.getWidths();
-    }
-
     return elm_sizes;
   }
 
