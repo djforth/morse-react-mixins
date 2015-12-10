@@ -15,6 +15,16 @@ module.exports = {
     return cx(css);
   },
 
+  setValue:function(arr, key, val){
+    return _.map(arr, (value)=>{
+      if(_.isObject(value) && _.has(value, key)){
+        value[key] = val;
+      }
+
+      return value;
+    });
+  },
+
   toggleCss:function(arr){
     return _.map(arr, (value)=>{
       if(_.isObject(value)){
