@@ -73,11 +73,14 @@ module.exports = {
   , getWidths:(list)=>{
     let items = (_.isArray(list)) ? list : elements;
     // console.log(list.length, list)
+    if(items.length === 0) return 0;
+    // if(items.length === 1) return getTrueWidth(_.first(items))
+
     let width  = _.reduce(items, function(p, c){
       let n = (_.isNumber(p)) ? p : getTrueWidth(p);
       n += getTrueWidth(c);
       return n;
-    });
+    }, 0);
 
     return width;
   }
