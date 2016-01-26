@@ -77,7 +77,7 @@
     "karma-safari-launcher": "^0.1.1",
     "karma-story-reporter": "^0.3.1",
     "phantomjs": "^1.9.17",
-    "react-jasmine": "git://github.com/djforth/react-jasmine.git",
+    "react-jasmine": "0.1.6",
     "react-tools": "^0.13.3",
     "rewireify": "^0.2.5",
     "sinon": "^1.15.4",
