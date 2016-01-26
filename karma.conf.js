@@ -17,7 +17,7 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-      '../node_modules/babel-polyfill/browser.js',
+      './node_modules/babel-polyfill/browser.js',
       './node_modules/react-tools/src/test/phantomjs-shims.js',
       './specs/*_spec.es6.js',
     ],

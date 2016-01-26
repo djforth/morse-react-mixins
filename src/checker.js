@@ -12,8 +12,8 @@ module.exports = {
     if(!check || _.isEmpty(keys)) return check;
 
     return _.reduce(keys, (prev, curr)=>{
-      if(prev) return prev
-      return _.has(obj, curr)
+      if(prev) return prev;
+      return _.has(obj, curr);
     }, false);
   }
 
@@ -26,4 +26,4 @@ module.exports = {
       return false;
     }
   }
-}
+};
