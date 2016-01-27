@@ -53,7 +53,7 @@ module.exports = {
     return this;
   }
 
-  , convertDomlist:()=>{
+  , convertDomlist:(list)=>{
     elements = Array.prototype.slice.call(list);
     return this;
   }

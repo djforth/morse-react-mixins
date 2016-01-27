@@ -10,7 +10,7 @@
     ]
   },
   "scripts": {
-    "build": "babel src -x '.js' --source-maps  -d lib",
+    "build": "babel src -x '.js'  -d lib",
     "build:watch": "babel  -x '.js' -w --source-maps src -d lib",
     "lint": "eslint src/**",
     "lint:tests": "eslint spec/**",
