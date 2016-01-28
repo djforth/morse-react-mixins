@@ -1,2 +1,5 @@
 ./coverage
 ./specs
+npm-shrinkwrap.json
+modernizr-config.json
+karma.conf.js
