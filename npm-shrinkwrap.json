@@ -1,6 +1,6 @@
 {
   "name": "morse-react-mixins",
-  "version": "0.1.15",
+  "version": "0.1.16",
   "dependencies": {
     "abbrev": {
       "version": "1.0.7",
