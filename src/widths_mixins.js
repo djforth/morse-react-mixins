@@ -1,8 +1,9 @@
 
 //Libraries
-const React = require("react")
+const React    = require("react")
     , ReactDOM = require("react-dom")
-    , _     = require("lodash");
+    , _        = require("lodash/core")
+    , includes = require("lodash/includes");
 
 const attrs = ["padding-left", "padding-right", "margin-left", "margin-right", "border-left-width", "border-right-width", "width"];
 
@@ -26,8 +27,8 @@ var getTrueWidth = (e)=>{
 
 function addElement(elm, w){
   if(
-    _.includes(
-      _.pluck(elm_sizes,  "elm"),
+    includes(
+      _.map(elm_sizes,  (e)=>e.elm),
       elm)
     ){
       elm_sizes = _.map(elm_sizes, (e)=>{

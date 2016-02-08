@@ -1,5 +1,6 @@
 
-const _     = require("lodash");
+const _         = require("lodash/core");
+const transform = require("lodash/transform");
 const cx    = require("classnames");
 
 module.exports = {
@@ -28,7 +29,7 @@ module.exports = {
   toggleCss:function(arr){
     return _.map(arr, (value)=>{
       if(_.isObject(value)){
-        value = _.transform(value, (r, v, k)=> r[k] = !v );
+        value = transform(value, (r, v, k)=> r[k] = !v );
       }
 
       return value;
