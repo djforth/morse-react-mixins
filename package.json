@@ -1,6 +1,6 @@
 {
   "name": "morse-react-mixins",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Useful react mixins",
   "main": "index.js",
   "babel": {
