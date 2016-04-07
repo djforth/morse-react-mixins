@@ -1,35 +1,35 @@
 
-const _         = require("lodash/core");
-const transform = require("lodash/transform");
-const cx    = require("classnames");
+const _         = require('lodash/core')
+    , transform = require('lodash/transform')
+    , cx        = require('classnames');
 
 module.exports = {
-  checkCss:function(css, k){
-    if(_.has(css, k)){
+  checkCss: function(css, k){
+    if (_.has(css, k)){
       return css[k];
     }
 
     return css.default;
-  },
+  }
 
-  getClasses:function(css){
+  , getClasses: function(css){
     return cx(css);
-  },
+  }
 
-  setValue:function(arr, key, val){
+  , setValue: function(arr, key, val){
     return _.map(arr, (value)=>{
-      if(_.isObject(value) && _.has(value, key)){
+      if (_.isObject(value) && _.has(value, key)){
         value[key] = val;
       }
 
       return value;
     });
-  },
+  }
 
-  toggleCss:function(arr){
+  , toggleCss: function(arr){
     return _.map(arr, (value)=>{
-      if(_.isObject(value)){
-        value = transform(value, (r, v, k)=> r[k] = !v );
+      if (_.isObject(value)){
+        value = transform(value, (r, v, k)=>{r[k] = !v;});
       }
 
       return value;

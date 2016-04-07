@@ -1,23 +1,24 @@
 
-const _ = require("lodash/core");
+const _ = require('lodash/core');
 
 module.exports = {
-  capitalize(input) {
-    if(_.isString(input)){
-      return this.removeUnderscore(input).replace(/^./, (match)=> match.toUpperCase());
+  capitalize: function(input){
+    if (_.isString(input)){
+      let matcher = (match)=>match.toUpperCase();
+      return this.removeUnderscore(input).replace(/^./, matcher);
     }
-    return "";
-  },
+    return '';
+  }
 
-  createId(...args){
-    return args.join("-").toLowerCase().replace(/\s/g, "-");
-  },
+  , createId: function(...args){
+    return args.join('-').toLowerCase().replace(/\s/g, '-');
+  }
 
-  removeUnderscore(input){
-    if(_.isString(input)){
-      return input.replace(/_|-/g, " ");
+  , removeUnderscore: function(input){
+    if (_.isString(input)){
+      return input.replace(/_|-/g, ' ');
     }
 
-    return "";
+    return '';
   }
 };
