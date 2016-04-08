@@ -22,10 +22,8 @@
     "lint": "eslint src/**",
     "lint:tests": "eslint spec/**",
     "test": "npm run lint && asset-pipeline-karma",
-    "test:watch": "karma start --browsers PhantomJS",
-    "test:ie9": "karma start --single-run --browsers \"IE9 - Win7\"",
-    "test:ie10": "karma start --single-run --browsers \"IE10 - Win7\"",
-    "test:mac": "karma start --single-run --browsers Chrome,Firefox,Safari,Opera"
+    "test:watch": "asset-pipeline-karma -w",
+    "test:mac": "asset-pipeline-karma -b"
   },
   "repository": {
     "type": "git",
@@ -73,15 +71,15 @@
     "eslint-config-google": "^0.4.0",
     "eslint-plugin-react": "^4.2.3",
     "lodash": "~4.8.2",
-    "react-addons-test-utils": "~0.14.8",
-    "react-jasmine": "~1.0.0",
-    "react": "~0.14.8",
-    "react-dom": "~0.14.8"
+    "react-addons-test-utils": "~15.0.0",
+    "react-jasmine": "~1.1.0",
+    "react": "~15.0.0",
+    "react-dom": "~15.0.0"
   },
   "peerDependencies": {
     "classnames": "^2.2.0",
     "lodash": "^4.8.2",
-    "react": "~0.14.8",
-    "react-dom": "~0.14.8"
+    "react": "~15.0.0",
+    "react-dom": "~15.0.0"
   }
 }
