@@ -29,7 +29,10 @@ module.exports = {
   , toggleCss: function(arr){
     return _.map(arr, (value)=>{
       if (_.isObject(value)){
-        value = transform(value, (r, v, k)=>{r[k] = !v;});
+        value = transform(value
+          , (r, v, k)=>{
+            r[k] = !v;
+          });
       }
 
       return value;

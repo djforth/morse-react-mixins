@@ -2,7 +2,7 @@ const _         = require('lodash');
 
 let widthMixins   = require("../src/widths_mixins");
 
-let jasmineHelpers = require("react-jasmine");
+let jasmineHelpers = require("@djforth/react-jasmine");
 let createElm      = jasmineHelpers.createElement
 
 describe('widthMixins', ()=> {
