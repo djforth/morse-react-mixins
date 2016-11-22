@@ -1,5 +1,6 @@
-coverage/
-specs/
-npm-shrinkwrap.json
-modernizr-config.json
-karma.conf.js
+spec/
+src/
+yarn.lock
+.apconfig
+.babelrc
+.eslintrc.js
