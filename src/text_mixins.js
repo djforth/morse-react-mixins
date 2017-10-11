@@ -1,6 +1,6 @@
-const _ = require('lodash/core');
+import _ from 'lodash/core';
 
-module.exports = {
+export default {
   capitalize: function(input) {
     if (_.isString(input)) {
       let matcher = match => match.toUpperCase();

@@ -2,7 +2,7 @@ import _ from 'lodash/core';
 // import React from 'react';
 import ReactDOM from 'react-dom';
 
-module.exports = {
+export default {
   checkArray: (array, greaterThan = 0) => array && _.isArray(array) && array.length > greaterThan,
 
   checkOject: (obj, keys = []) => {

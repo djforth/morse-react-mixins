@@ -1,7 +1,7 @@
 // Libraries
 // import React from 'react';
 import ReactDOM from 'react-dom';
-import _ from 'lodash/core';
+import _ from 'lodash';
 import includes from 'lodash/includes';
 
 let attrs = [
@@ -45,7 +45,7 @@ function addElement(elm, w) {
   }
 }
 /* eslint-disable no-invalid-this */
-module.exports = {
+export default {
   getTrueWidth: getTrueWidth,
 
   convertRefs: refs => {

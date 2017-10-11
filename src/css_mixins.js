@@ -2,7 +2,7 @@ import _ from 'lodash/core';
 import transform from 'lodash/transform';
 import cx from 'classnames';
 
-module.exports = {
+export default {
   checkCss: function(css, k) {
     if (_.has(css, k)) {
       return css[k];
