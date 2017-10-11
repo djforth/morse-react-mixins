@@ -1,31 +1,30 @@
-
 // Libraries
-const React    = require('react')
-    , ReactDOM = require('react-dom')
-    , _        = require('lodash/core')
-    , includes = require('lodash/includes');
+// import React from 'react';
+import ReactDOM from 'react-dom';
+import _ from 'lodash/core';
+import includes from 'lodash/includes';
 
-var attrs = [
-  'padding-left'
-  , 'padding-right'
-  , 'margin-left'
-  , 'margin-right'
-  , 'border-left-width'
-  , 'border-right-width'
-  , 'width'
+let attrs = [
+  'padding-left',
+  'padding-right',
+  'margin-left',
+  'margin-right',
+  'border-left-width',
+  'border-right-width',
+  'width',
 ];
 
-let elements  = []
-  , elm_sizes = [];
+let elements = [];
+let elmSizes = [];
 
-function getValue(v){
+function getValue(v) {
   return Number(v.replace(/[a-z]|%/g, ''));
 }
 
-function getTrueWidth(e){
-  let elm =  window.getComputedStyle(e, null)
-    , n = 0;
-  _.forEach(attrs, (attr)=>{
+function getTrueWidth(e) {
+  let elm = window.getComputedStyle(e, null);
+  let n = 0;
+  _.forEach(attrs, attr => {
     let v = getValue(elm.getPropertyValue(attr));
     n += v;
   });
@@ -35,52 +34,58 @@ function getTrueWidth(e){
   return n;
 }
 
-function addElement(elm, w){
-  if (includes(_.map(elm_sizes, (e)=>e.elm), elm)){
-    elm_sizes = _.map(elm_sizes, (e)=>{
+function addElement(elm, w) {
+  if (includes(_.map(elmSizes, e => e.elm), elm)) {
+    elmSizes = _.map(elmSizes, e => {
       if (e.elm.isEqualNode(elm)) e.width = w;
       return e;
     });
   } else {
-    elm_sizes.push({elm: elm, width: w});
+    elmSizes.push({ elm: elm, width: w });
   }
 }
-
+/* eslint-disable no-invalid-this */
 module.exports = {
-  getTrueWidth: getTrueWidth
+  getTrueWidth: getTrueWidth,
 
-  , convertRefs: (refs)=>{
+  convertRefs: refs => {
     elements = _.values(refs);
     return this;
-  }
+  },
 
-  , convertDomlist: function(list){
+  convertDomlist: function(list) {
     elements = Array.prototype.slice.call(list);
     return this;
-  }
+  },
 
-  , convertReactComps: function(refs){
-    elements = _.map(_.values(refs), (r)=>{
+  convertReactComps: function(refs) {
+    elements = _.map(_.values(refs), r => {
       if (_.isElement(r)) return r;
       return ReactDOM.findDOMNode(r);
     });
-  }
+  },
 
-  , getAllWidths: function(){
-    return elm_sizes;
-  }
+  getAllWidths: function() {
+    return elmSizes;
+  },
 
-  , getWidths: function(list){
-    let items, width;
-    items = (_.isArray(list)) ? list : elements;
+  getWidths: function(list) {
+    let items;
+    let width;
+    items = _.isArray(list) ? list : elements;
     if (items.length === 0) return 0;
 
-    width  = _.reduce(items, function(p, c){
-      let n = (_.isNumber(p)) ? p : getTrueWidth(p);
-      n += getTrueWidth(c);
-      return n;
-    }, 0);
+    width = _.reduce(
+      items,
+      function(p, c) {
+        let n = _.isNumber(p) ? p : getTrueWidth(p);
+        n += getTrueWidth(c);
+        return n;
+      },
+      0
+    );
 
     return width;
-  }
+  },
 };
+/* eslint-enable no-invalid-this */
