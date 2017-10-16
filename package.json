@@ -1,6 +1,6 @@
 {
   "name": "morse-react-mixins",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "description": "Useful react mixins",
   "main": "libs/index.js",
   "repository": "git@github.com:djforth/morse-react-mixins.git",
