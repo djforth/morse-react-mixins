@@ -1,6 +1,7 @@
-spec/
+__tests__/
 src/
 yarn.lock
 .apconfig
 .babelrc
-.eslintrc.js
+.eslintrc
+

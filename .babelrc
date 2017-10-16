@@ -3,8 +3,8 @@
   "env": {
     "production": {
       "plugins": [
-        "lodash",
-        "add-module-exports"
+        "lodash"
+        // "add-module-exports"
       ]
       , "presets": [
         ["env", {

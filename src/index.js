@@ -1,7 +1,7 @@
-import cssMixins from './lib/css_mixins';
-import textMixins from './lib/text_mixins';
-import widthsMixins from './lib/widths_mixins';
-import checkTest from './lib/checker';
+import cssMixins from './css_mixins';
+import textMixins from './text_mixins';
+import widthsMixins from './widths_mixins';
+import checkTest from './checker';
 
 /* eslint-disable camelcase */
 export const checker = checkTest;
