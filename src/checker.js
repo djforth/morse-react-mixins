@@ -5,7 +5,7 @@ import ReactDOM from 'react-dom';
 export default {
   checkArray: (array, greaterThan = 0) => array && _.isArray(array) && array.length > greaterThan,
 
-  checkOject: (obj, keys = []) => {
+  checkObject: (obj, keys = []) => {
     let check = _.isObject(obj);
     if (!check || _.isEmpty(keys)) return check;
 
