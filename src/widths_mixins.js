@@ -24,7 +24,7 @@ function getValue(v) {
 function getTrueWidth(e) {
   let elm = window.getComputedStyle(e, null);
   let n = 0;
-  _.forEach(attrs, attr => {
+  attrs.forEach(attr => {
     let v = getValue(elm.getPropertyValue(attr));
     n += v;
   });
@@ -35,8 +35,8 @@ function getTrueWidth(e) {
 }
 
 function addElement(elm, w) {
-  if (includes(_.map(elmSizes, e => e.elm), elm)) {
-    elmSizes = _.map(elmSizes, e => {
+  if (includes(elmSizes.map(e => e.elm), elm)) {
+    elmSizes = elmSizes.map(e => {
       if (e.elm.isEqualNode(elm)) e.width = w;
       return e;
     });
@@ -49,7 +49,7 @@ export default {
   getTrueWidth: getTrueWidth,
 
   convertRefs: refs => {
-    elements = _.values(refs);
+    elements = Object.values(refs);
     return this;
   },
 
@@ -59,7 +59,7 @@ export default {
   },
 
   convertReactComps: function(refs) {
-    elements = _.map(_.values(refs), r => {
+    elements = Object.values(refs).map(r => {
       if (_.isElement(r)) return r;
       return ReactDOM.findDOMNode(r);
     });
@@ -75,15 +75,11 @@ export default {
     items = _.isArray(list) ? list : elements;
     if (items.length === 0) return 0;
 
-    width = _.reduce(
-      items,
-      function(p, c) {
-        let n = _.isNumber(p) ? p : getTrueWidth(p);
-        n += getTrueWidth(c);
-        return n;
-      },
-      0
-    );
+    width = items.reduce((p, c) => {
+      let n = _.isNumber(p) ? p : getTrueWidth(p);
+      n += getTrueWidth(c);
+      return n;
+    }, 0);
 
     return width;
   },

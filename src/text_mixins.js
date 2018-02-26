@@ -1,10 +1,18 @@
 import _ from 'lodash/core';
 
+const removeUnderscore = input => {
+  if (_.isString(input)) {
+    return input.replace(/_|-/g, ' ');
+  }
+
+  return '';
+};
+
 export default {
   capitalize: function(input) {
     if (_.isString(input)) {
       let matcher = match => match.toUpperCase();
-      return this.removeUnderscore(input).replace(/^./, matcher);
+      return removeUnderscore(input).replace(/^./, matcher);
     }
     return '';
   },
@@ -16,11 +24,5 @@ export default {
       .replace(/\s/g, '-');
   },
 
-  removeUnderscore: function(input) {
-    if (_.isString(input)) {
-      return input.replace(/_|-/g, ' ');
-    }
-
-    return '';
-  },
+  removeUnderscore,
 };

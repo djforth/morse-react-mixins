@@ -9,14 +9,10 @@ export default {
     let check = _.isObject(obj);
     if (!check || _.isEmpty(keys)) return check;
 
-    return _.reduce(
-      keys,
-      (prev, curr) => {
-        if (prev) return prev;
-        return _.has(obj, curr);
-      },
-      false
-    );
+    return keys.reduce((prev, curr) => {
+      if (prev) return prev;
+      return _.has(obj, curr);
+    }, false);
   },
 
   isMounted: component => {

@@ -1,4 +1,4 @@
-import _ from 'lodash/core';
+import _ from 'lodash';
 import transform from 'lodash/transform';
 import cx from 'classnames';
 
@@ -16,7 +16,7 @@ export default {
   },
 
   setValue: function(arr, key, val) {
-    return _.map(arr, value => {
+    return arr.map(value => {
       if (_.isObject(value) && _.has(value, key)) {
         value[key] = val;
       }
@@ -26,7 +26,7 @@ export default {
   },
 
   toggleCss: function(arr) {
-    return _.map(arr, value => {
+    return arr.map(value => {
       if (_.isObject(value)) {
         return transform(value, (r, v, k) => {
           r[k] = !v;

@@ -4,10 +4,10 @@ import cssMixins from '../src/css_mixins';
 
 describe('cssMixins', () => {
   let revert, spy;
-  let mockdata = ['foo', {bar:false}];
+  let mockdata = ['foo', { bar: false }];
   let md = { add: 'foo', default: 'bar' };
   beforeEach(() => {
-    spy = jasmine.createSpy('cx');
+    spy = jest.fn();
     revert = cssMixins.__set__('cx', spy);
   });
 
@@ -28,13 +28,12 @@ describe('cssMixins', () => {
   });
 
   it('getClasses should call classnames', function() {
-    cssMixins.getClasses('foo')
+    cssMixins.getClasses('foo');
     expect(spy).toHaveBeenCalledWith('foo');
   });
 
   it('toggleCss should reverse any boolean object', function() {
     let css = cssMixins.toggleCss(mockdata);
-
     expect(css[1].bar).toBeTruthy();
   });
 });

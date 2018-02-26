@@ -1,0 +1,25 @@
+{
+  "browser": true,
+  "collectCoverageFrom": ["<rootDir>/src/packs/modules/**/*.{js,jsx}"],
+  "coveragePathIgnorePatterns": ["<rootDir>/node_modules/", "<rootDir>/__tests__/", "<rootDir>/__tests__/__helpers__"],
+  "roots": ["<rootDir>/__tests__/", "<rootDir>/src/"],
+  "modulePaths": ["<rootDir>/src/"],
+  "modulePathIgnorePatterns": ["<rootDir>/lib/", "<rootDir>/node_modules/"],
+  "moduleNameMapper": {
+    "@djforth/urlparser": "<rootDir>/__mocks__/@djforth/urlparser"
+  },
+  "transform": {
+    "^.+\\.jsx$": "babel-jest",
+    "^.+\\.js$": "babel-jest"
+  },
+  "setupTestFrameworkScriptFile": "@djforth/jest-matchers",
+  "testPathIgnorePatterns": [
+    "<rootDir>/__tests__/setupTests.js",
+    "<rootDir>/__tests__/__dummy__",
+    "<rootDir>/__tests__/__helpers__",
+    "<rootDir>/lib",
+    "<rootDir>/node_modules"
+  ],
+  "unmockedModulePathPatterns": ["jasmine-expect"],
+  "verbose": true
+}

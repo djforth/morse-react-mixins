@@ -2,7 +2,7 @@ import _ from 'lodash';
 
 import widthMixins from '../src/widths_mixins';
 
-import { createElement, createHolder } from './utils/createElements';
+import { createHolder } from './__helpers__/createElements';
 
 describe('widthMixins', () => {
   let revert, spy;
@@ -65,7 +65,7 @@ describe('widthMixins', () => {
     let elms, addElement, getTrueWidth, holder;
 
     beforeEach(function() {
-      spy = jasmine.createSpy('addElement');
+      spy = jest.fn();
       revert = widthMixins.__set__('addElement', spy);
       getTrueWidth = widthMixins.__get__('getTrueWidth');
       let i;
@@ -95,7 +95,7 @@ describe('widthMixins', () => {
 
   describe('get widths', function() {
     beforeEach(function() {
-      spy = jasmine.createSpy('getTrueWidth').and.returnValue(20);
+      spy = jest.fn(() => 20);
       revert = widthMixins.__set__('getTrueWidth', spy);
     });
 
@@ -107,7 +107,7 @@ describe('widthMixins', () => {
       let width = widthMixins.getWidths(['elm', 'elm2']);
 
       expect(width).toEqual(40);
-      expect(spy.calls.count()).toEqual(2);
+      expect(spy.mock.calls.length).toEqual(2);
     });
 
     it('should use element if nothing passed', function() {
@@ -116,13 +116,13 @@ describe('widthMixins', () => {
       let width = widthMixins.getWidths();
 
       expect(width).toEqual(60);
-      expect(spy.calls.count()).toEqual(3);
+      expect(spy.mock.calls.length).toEqual(3);
     });
   });
 
   describe('converters', function() {
     beforeEach(function() {
-      spy = jasmine.createSpy('getTrueWidth').and.returnValue(20);
+      spy = jest.fn(() => 20);
       revert = widthMixins.__set__('getTrueWidth', spy);
     });
 

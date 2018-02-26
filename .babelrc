@@ -2,23 +2,21 @@
   "presets": [],
   "env": {
     "production": {
-      "plugins": [
-        "lodash"
-        // "add-module-exports"
-      ]
-      , "presets": [
-        ["env", {
-          modules: "umd",
-          "targets": {
-              'node': 4,
-              "browsers": [
-                "last 2 versions",
-                "chrome >= 55",
-                "IE >= 11"
-              ]
-            }
-        }]
-        , ["minify", {mangle:false}]
+      "plugins": ["lodash"],
+      "presets": [
+        [
+          "env",
+          {
+            "modules": false,
+            "targets": {
+              "node": 4,
+              "browsers": ["last 2 versions", "chrome >= 55", "IE >= 11"],
+              "uglify": true
+            },
+            "useBuiltIns": true
+          }
+        ],
+        "minify"
       ]
     },
     "test": {
@@ -26,27 +24,21 @@
         [
           "istanbul",
           {
-            "exclude": [
-              "**/*_spec.js"
-            ]
+            "exclude": ["**/*.test.js", "__tests__/__helpers__/*.js"]
           }
         ],
         "rewire"
       ],
       "presets": [
-        ["es2015", {"modules": false}],
-        ["env", {
-          modules: false,
-          "targets": {
-              'node': 4,
-              "browsers": [
-                "last 2 versions",
-                "chrome >= 55",
-                "IE >= 11",
-                "phantomjs >= 2"
-              ]
-            }
-        }]
+        [
+          "env",
+          {
+            "targets": {
+              "browsers": ["last 2 versions", "chrome >= 55", "IE >= 11"]
+            },
+            "useBuiltIns": true
+          }
+        ]
       ]
     }
   }
