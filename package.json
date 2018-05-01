@@ -1,6 +1,6 @@
 {
   "name": "morse-react-mixins",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "Useful react mixins",
   "main": "lib/index.js",
   "repository": "git@github.com:djforth/morse-react-mixins.git",
@@ -10,6 +10,7 @@
     "@djforth/jest-matchers": "1.5.2",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
+    "babel-jest": "^22.4.3",
     "babel-plugin-istanbul": "^4.1.6",
     "babel-plugin-lodash": "^3.3.2",
     "babel-plugin-rewire": "^1.1.0",
